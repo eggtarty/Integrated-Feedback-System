@@ -1,0 +1,8 @@
+{
+  "name": "hr-feedback-portal",
+  "version": "1.0.0",
+  "description": "Jabil HR Feedback Portal - Static Site",
+  "scripts": {
+    "build": "echo 'Static site — no build required'"
+  }
+}
