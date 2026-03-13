@@ -320,7 +320,6 @@ function validateForm() {
       }
     }
     [
-      { id: "routeName",        fn: v => v.trim().length > 0 },
       { id: "driverName",       fn: v => v.trim().length > 0 },
       { id: "vehiclePlate",     fn: v => v.trim().length > 0 },
       { id: "transportCompany", fn: v => v !== "" },
@@ -365,7 +364,6 @@ function getCategoryExtras() {
       issueType: isDriver
         ? (attitudeVal === "Others / Lain-lain" ? document.getElementById("driverAttitudeOthers").value.trim() : attitudeVal)
         : (vehicleVal  === "Others / Lain-lain" ? document.getElementById("vehicleIssueOthers").value.trim()  : vehicleVal),
-      routeName:        document.getElementById("routeName").value.trim(),
       driverName:       document.getElementById("driverName").value.trim(),
       vehiclePlate:     document.getElementById("vehiclePlate").value.trim(),
       transportCompany: document.getElementById("transportCompany").value,
