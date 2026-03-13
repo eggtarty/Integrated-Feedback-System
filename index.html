@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HR Feedback Portal — Jabil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <div class="page-wrapper">
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-left">
+        <div class="logo-mark">HR</div>
+        <div class="header-titles">
+          <h1>Feedback Portal <span class="bm">/ Portal Maklum Balas</span></h1>
+          <p>Jabil HR Services · Employee Complaint Submission</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          Accepting Submissions
+        </div>
+      </div>
+    </header>
+
+    <!-- ══════════════════════════
+         SCREEN 1 — CATEGORY PICK
+    ══════════════════════════ -->
+    <div id="screen-category" class="screen active">
+
+      <div class="category-hero">
+        <div class="step-tag">Step 1 of 2 &nbsp;·&nbsp; Langkah 1 dari 2</div>
+        <h2 class="hero-title">What is your complaint about?</h2>
+        <p class="hero-sub">Pilih kategori aduan anda / Select your complaint category below</p>
+      </div>
+
+      <div class="conf-banner">
+        <span>🔒</span>
+        <span><strong>Your submission is strictly confidential.</strong> Penghantaran anda adalah sulit sepenuhnya.</span>
+      </div>
+
+      <div class="category-grid">
+
+        <button class="cat-card" data-category="Canteen" data-emoji="🍽️" onclick="selectCategory(this)">
+          <div class="cat-glow" style="--glow: #FF8F00;"></div>
+          <div class="cat-icon-wrap" style="background: linear-gradient(135deg,#FFF3E0,#FFE0B2);">
+            <span class="cat-emoji">🍽️</span>
+          </div>
+          <div class="cat-info">
+            <div class="cat-name">Canteen</div>
+            <div class="cat-name-bm">Kantin</div>
+          </div>
+          <div class="cat-chevron">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+        </button>
+
+        <button class="cat-card" data-category="Locker" data-emoji="🔐" onclick="selectCategory(this)">
+          <div class="cat-glow" style="--glow: #1E88E5;"></div>
+          <div class="cat-icon-wrap" style="background: linear-gradient(135deg,#E3F2FD,#BBDEFB);">
+            <span class="cat-emoji">🔐</span>
+          </div>
+          <div class="cat-info">
+            <div class="cat-name">Locker</div>
+            <div class="cat-name-bm">Loker</div>
+          </div>
+          <div class="cat-chevron">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+        </button>
+
+        <button class="cat-card" data-category="ESD" data-emoji="⚡" onclick="selectCategory(this)">
+          <div class="cat-glow" style="--glow: #8E24AA;"></div>
+          <div class="cat-icon-wrap" style="background: linear-gradient(135deg,#F3E5F5,#E1BEE7);">
+            <span class="cat-emoji">⚡</span>
+          </div>
+          <div class="cat-info">
+            <div class="cat-name">ESD</div>
+            <div class="cat-name-bm">ESD</div>
+          </div>
+          <div class="cat-chevron">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+        </button>
+
+        <button class="cat-card" data-category="Transportation" data-emoji="🚌" onclick="selectCategory(this)">
+          <div class="cat-glow" style="--glow: #2E7D32;"></div>
+          <div class="cat-icon-wrap" style="background: linear-gradient(135deg,#E8F5E9,#C8E6C9);">
+            <span class="cat-emoji">🚌</span>
+          </div>
+          <div class="cat-info">
+            <div class="cat-name">Transportation</div>
+            <div class="cat-name-bm">Pengangkutan</div>
+          </div>
+          <div class="cat-chevron">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- ══════════════════════════
+         SCREEN 2 — COMPLAINT FORM
+    ══════════════════════════ -->
+    <div id="screen-form" class="screen">
+
+      <div class="form-topbar">
+        <button class="back-btn" onclick="goBack()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Back / Kembali
+        </button>
+        <div class="active-cat-badge" id="activeCatBadge">
+          <span id="badgeEmoji"></span>
+          <span id="badgeName"></span>
+        </div>
+        <div class="step-tag-small">Step 2 of 2</div>
+      </div>
+
+      <main class="form-card">
+
+        <div class="form-card-header">
+          <h2 id="formTitle">Complaint Form</h2>
+          <p class="form-card-sub" id="formSub">Borang Aduan</p>
+        </div>
+
+        <form id="feedbackForm" novalidate>
+
+          <input type="hidden" id="categoryField" />
+
+          <!-- SECTION 1 -->
+          <div class="form-section">
+            <div class="section-hd">
+              <div class="sec-num">01</div>
+              <div>
+                <h3 class="sec-title">Personal Information <span class="bm-s">/ Maklumat Peribadi</span></h3>
+              </div>
+            </div>
+            <div class="fields-grid">
+
+              <div class="field-wrap">
+                <label for="empName">Full Name <span class="bm-lbl">/ Nama Penuh</span> <span class="req">*</span></label>
+                <input type="text" id="empName" placeholder="e.g. Ahmad bin Abdullah" autocomplete="off"/>
+                <span class="err" id="err-empName">Please enter your full name. / Sila masukkan nama penuh.</span>
+              </div>
+
+              <div class="field-wrap">
+                <label for="empID">Employee ID <span class="bm-lbl">/ ID Pekerja</span> <span class="req">*</span></label>
+                <input type="text" id="empID" placeholder="e.g. EMP001" autocomplete="off"/>
+                <span class="err" id="err-empID">Please enter your Employee ID. / Sila masukkan ID Pekerja.</span>
+              </div>
+
+              <div class="field-wrap">
+                <label for="empPhone">Phone Number <span class="bm-lbl">/ No. Telefon</span> <span class="req">*</span></label>
+                <input type="tel" id="empPhone" placeholder="e.g. 012-3456789" autocomplete="off"/>
+                <span class="err" id="err-empPhone">Please enter your phone number. / Sila masukkan no. telefon.</span>
+              </div>
+
+              <div class="field-wrap">
+                <label for="empEmail">Email Address <span class="bm-lbl">/ Alamat E-mel</span> <span class="optional-tag">Optional / Pilihan</span></label>
+                <input type="email" id="empEmail" placeholder="e.g. ahmad@jabil.com (for follow-up)" autocomplete="off"/>
+                <span class="err" id="err-empEmail">Please enter a valid email. / Sila masukkan e-mel yang sah.</span>
+              </div>
+
+              <div class="field-wrap full">
+                <label for="empPlant">Plant / Location <span class="bm-lbl">/ Loji / Lokasi</span> <span class="req">*</span></label>
+                <div class="select-wrap">
+                  <select id="empPlant">
+                    <option value="">-- Select your plant / Pilih loji anda --</option>
+                    <option value="Plant 1">Plant 1</option>
+                    <option value="Plant 2">Plant 2</option>
+                    <option value="Plant BK">Plant BK</option>
+                  </select>
+                  <span class="select-arrow">▾</span>
+                </div>
+                <span class="err" id="err-empPlant">Please select your plant. / Sila pilih loji anda.</span>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <!-- SECTION 2 — CATEGORY-SPECIFIC FIELDS -->
+          <div class="form-section" id="section-category-fields" style="display:none;">
+            <div class="section-hd">
+              <div class="sec-num">02</div>
+              <div>
+                <h3 class="sec-title">Issue Details <span class="bm-s">/ Butiran Isu</span></h3>
+                <p class="sec-note" id="catFieldsNote">Specific information for your category</p>
+              </div>
+            </div>
+
+            <!-- CANTEEN FIELDS -->
+            <div id="fields-Canteen" class="cat-fields" style="display:none;">
+              <div class="fields-grid">
+                <div class="field-wrap full">
+                  <label>Canteen Issue Type <span class="bm-lbl">/ Jenis Isu Kantin</span> <span class="req">*</span></label>
+                  <div class="checkbox-group" id="canteenIssueGroup">
+                    <label class="check-opt"><input type="radio" name="canteenIssue" value="Variety of food / Kepelbagaian makanan" onchange="onCanteenIssueChange()"> <span>Variety of Food / Kepelbagaian Makanan</span></label>
+                    <label class="check-opt"><input type="radio" name="canteenIssue" value="Food pricing / Harga makanan" onchange="onCanteenIssueChange()"> <span>Food Pricing / Harga Makanan</span></label>
+                    <label class="check-opt"><input type="radio" name="canteenIssue" value="Hygiene / Kebersihan" onchange="onCanteenIssueChange()"> <span>Hygiene / Kebersihan</span></label>
+                    <label class="check-opt"><input type="radio" name="canteenIssue" value="Food quality / Kualiti makanan" onchange="onCanteenIssueChange()"> <span>Food Quality / Kualiti Makanan</span></label>
+                    <label class="check-opt"><input type="radio" name="canteenIssue" value="Long waiting time / Masa menunggu lama" onchange="onCanteenIssueChange()"> <span>Long Waiting Time / Masa Menunggu Lama</span></label>
+                    <label class="check-opt"><input type="radio" name="canteenIssue" value="Staff attitude / Sikap kakitangan" onchange="onCanteenIssueChange()"> <span>Staff Attitude / Sikap Kakitangan</span></label>
+                    <label class="check-opt"><input type="radio" name="canteenIssue" value="Food portion size / Saiz hidangan" onchange="onCanteenIssueChange()"> <span>Food Portion Size / Saiz Hidangan</span></label>
+                    <label class="check-opt"><input type="radio" name="canteenIssue" value="Others / Lain-lain" onchange="onCanteenIssueChange()"> <span>Others / Lain-lain</span></label>
+                  </div>
+                  <span class="err" id="err-canteenIssue">Please select an issue type. / Sila pilih jenis isu.</span>
+                </div>
+
+                <!-- Others free text — canteen -->
+                <div class="field-wrap full" id="canteenOthersWrap" style="display:none;">
+                  <label for="canteenOthers">Please specify <span class="bm-lbl">/ Sila nyatakan</span> <span class="req">*</span></label>
+                  <input type="text" id="canteenOthers" placeholder="Describe the issue / Huraikan isu tersebut" />
+                  <span class="err" id="err-canteenOthers">Please describe the issue. / Sila huraikan isu.</span>
+                </div>
+
+                <div class="field-wrap">
+                  <label for="incidentDate">Date of Incident <span class="bm-lbl">/ Tarikh Insiden</span> <span class="req">*</span></label>
+                  <input type="date" id="incidentDate" />
+                  <span class="err" id="err-incidentDate">Please select a date. / Sila pilih tarikh.</span>
+                </div>
+                <div class="field-wrap">
+                  <label for="incidentTime">Time of Issue <span class="bm-lbl">/ Masa Isu</span> <span class="req">*</span></label>
+                  <div class="select-wrap">
+                    <select id="incidentTime">
+                      <option value="">-- Select time / Pilih masa --</option>
+                      <option value="Morning (6am–10am) / Pagi (6pg–10pg)">Morning (6am–10am) / Pagi (6pg–10pg)</option>
+                      <option value="Lunch (10am–2pm) / Tengahari (10pg–2ptg)">Lunch (10am–2pm) / Tengahari (10pg–2ptg)</option>
+                      <option value="Tea Break (2pm–4pm) / Rehat Petang (2ptg–4ptg)">Tea Break (2pm–4pm) / Rehat Petang (2ptg–4ptg)</option>
+                      <option value="Dinner (4pm–8pm) / Makan Malam (4ptg–8mlm)">Dinner (4pm–8pm) / Makan Malam (4ptg–8mlm)</option>
+                      <option value="Night Shift / Syif Malam">Night Shift / Syif Malam</option>
+                      <option value="Other / Lain-lain">Other / Lain-lain</option>
+                    </select>
+                    <span class="select-arrow">▾</span>
+                  </div>
+                  <span class="err" id="err-incidentTime">Please select a time period. / Sila pilih masa.</span>
+                </div>
+                <div class="field-wrap full">
+                  <label for="incidentTimeSpecific">Specific Time <span class="bm-lbl">/ Masa Tepat</span> <span class="optional-tag">Optional / Pilihan</span></label>
+                  <input type="text" id="incidentTimeSpecific" placeholder="e.g. 12:30pm" />
+                </div>
+              </div>
+            </div>
+
+            <!-- LOCKER FIELDS -->
+            <div id="fields-Locker" class="cat-fields" style="display:none;">
+              <div class="fields-grid">
+                <div class="field-wrap full">
+                  <label for="lockerIssue">Locker Issue Type <span class="bm-lbl">/ Jenis Isu Loker</span> <span class="req">*</span></label>
+                  <div class="select-wrap">
+                    <select id="lockerIssue" onchange="onLockerIssueChange()">
+                      <option value="">-- Select issue type / Pilih jenis isu --</option>
+                      <option value="Locker damage / Loker rosak">Locker Damage / Loker Rosak</option>
+                      <option value="Locker door cannot lock / Pintu loker tidak boleh dikunci">Locker Door Cannot Lock / Pintu Loker Tidak Boleh Dikunci</option>
+                      <option value="Locker key missing / Kunci loker hilang">Locker Key Missing / Kunci Loker Hilang</option>
+                      <option value="Locker safety concern / Kebimbangan keselamatan loker">Locker Safety Concern / Kebimbangan Keselamatan Loker</option>
+                      <option value="Locker cleanliness / Kebersihan loker">Locker Cleanliness / Kebersihan Loker</option>
+                      <option value="Locker allocation problem / Masalah peruntukan loker">Locker Allocation Problem / Masalah Peruntukan Loker</option>
+                      <option value="Others / Lain-lain">Others / Lain-lain</option>
+                    </select>
+                    <span class="select-arrow">▾</span>
+                  </div>
+                  <span class="err" id="err-lockerIssue">Please select an issue type. / Sila pilih jenis isu.</span>
+                </div>
+
+                <!-- Others free text — locker -->
+                <div class="field-wrap full" id="lockerOthersWrap" style="display:none;">
+                  <label for="lockerOthers">Please specify <span class="bm-lbl">/ Sila nyatakan</span> <span class="req">*</span></label>
+                  <input type="text" id="lockerOthers" placeholder="Describe the issue / Huraikan isu tersebut" />
+                  <span class="err" id="err-lockerOthers">Please describe the issue. / Sila huraikan isu.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TRANSPORT FIELDS -->
+            <div id="fields-Transportation" class="cat-fields" style="display:none;">
+              <div class="fields-grid">
+
+                <!-- LEVEL 1 — Main category -->
+                <div class="field-wrap full">
+                  <label for="transportCategory">Transport Issue Category <span class="bm-lbl">/ Kategori Isu Pengangkutan</span> <span class="req">*</span></label>
+                  <div class="select-wrap">
+                    <select id="transportCategory" onchange="onTransportCategoryChange()">
+                      <option value="">-- Select category / Pilih kategori --</option>
+                      <option value="Driver Attitude / Sikap Pemandu">Driver Attitude / Sikap Pemandu</option>
+                      <option value="Vehicle Issue / Isu Kenderaan">Vehicle Issue / Isu Kenderaan</option>
+                    </select>
+                    <span class="select-arrow">▾</span>
+                  </div>
+                  <span class="err" id="err-transportCategory">Please select a category. / Sila pilih kategori.</span>
+                </div>
+
+                <!-- LEVEL 2A — Driver Attitude subcategory -->
+                <div class="field-wrap full" id="driverAttitudeWrap" style="display:none;">
+                  <label for="driverAttitudeIssue">Driver Attitude Issue <span class="bm-lbl">/ Isu Sikap Pemandu</span> <span class="req">*</span></label>
+                  <div class="select-wrap">
+                    <select id="driverAttitudeIssue" onchange="onDriverAttitudeChange()">
+                      <option value="">-- Select issue / Pilih isu --</option>
+                      <option value="Smoking / Merokok">Smoking / Merokok</option>
+                      <option value="Indecent behaviour / Berkelakuan tidak senonoh">Indecent Behaviour / Berkelakuan Tidak Senonoh</option>
+                      <option value="Scolding employees / Memarahi pekerja">Scolding Employees / Memarahi Pekerja</option>
+                      <option value="Dangerous driving / Memandu dalam keadaan berbahaya">Dangerous Driving / Memandu Dalam Keadaan Berbahaya</option>
+                      <option value="Late pickup / Lewat menjemput">Late Pickup / Lewat Menjemput</option>
+                      <option value="Others / Lain-lain">Others / Lain-lain</option>
+                    </select>
+                    <span class="select-arrow">▾</span>
+                  </div>
+                  <span class="err" id="err-driverAttitudeIssue">Please select an issue. / Sila pilih isu.</span>
+                </div>
+
+                <!-- LEVEL 2A — Others text field -->
+                <div class="field-wrap full" id="driverAttitudeOthersWrap" style="display:none;">
+                  <label for="driverAttitudeOthers">Please specify <span class="bm-lbl">/ Sila nyatakan</span> <span class="req">*</span></label>
+                  <input type="text" id="driverAttitudeOthers" placeholder="Describe the issue / Huraikan isu tersebut" />
+                  <span class="err" id="err-driverAttitudeOthers">Please describe the issue. / Sila huraikan isu.</span>
+                </div>
+
+                <!-- LEVEL 2B — Vehicle Issue subcategory -->
+                <div class="field-wrap full" id="vehicleIssueWrap" style="display:none;">
+                  <label for="vehicleIssueType">Vehicle Issue <span class="bm-lbl">/ Isu Kenderaan</span> <span class="req">*</span></label>
+                  <div class="select-wrap">
+                    <select id="vehicleIssueType" onchange="onVehicleIssueChange()">
+                      <option value="">-- Select issue / Pilih isu --</option>
+                      <option value="No air conditioning / Tiada penghawa dingin">No Air Conditioning / Tiada Penghawa Dingin</option>
+                      <option value="Hygiene / Kebersihan">Hygiene / Kebersihan</option>
+                      <option value="Damaged seat / Tempat duduk rosak">Damaged Seat / Tempat Duduk Rosak</option>
+                      <option value="Overcrowded / Terlalu sesak">Overcrowded / Terlalu Sesak</option>
+                      <option value="Others / Lain-lain">Others / Lain-lain</option>
+                    </select>
+                    <span class="select-arrow">▾</span>
+                  </div>
+                  <span class="err" id="err-vehicleIssueType">Please select an issue. / Sila pilih isu.</span>
+                </div>
+
+                <!-- LEVEL 2B — Others text field -->
+                <div class="field-wrap full" id="vehicleIssueOthersWrap" style="display:none;">
+                  <label for="vehicleIssueOthers">Please specify <span class="bm-lbl">/ Sila nyatakan</span> <span class="req">*</span></label>
+                  <input type="text" id="vehicleIssueOthers" placeholder="Describe the issue / Huraikan isu tersebut" />
+                  <span class="err" id="err-vehicleIssueOthers">Please describe the issue. / Sila huraikan isu.</span>
+                </div>
+
+              </div>
+
+              <!-- VENDOR INFO — Transport only -->
+              <div class="vendor-section">
+                <div class="vendor-header">
+                  <span class="vendor-icon">🚌</span>
+                  <div>
+                    <h4 class="vendor-title">Transport Vendor Information <span class="bm-s">/ Maklumat Vendor Pengangkutan</span></h4>
+                    <p class="sec-note">Required for proper follow-up / Diperlukan untuk tindakan susulan</p>
+                  </div>
+                </div>
+                <div class="fields-grid">
+                  <div class="field-wrap full">
+                    <label for="routeName">Route Name (Street Name) <span class="bm-lbl">/ Nama Laluan</span> <span class="req">*</span></label>
+                    <input type="text" id="routeName" placeholder="e.g. Jalan Pending, Kuching" />
+                    <span class="err" id="err-routeName">Please enter the route name. / Sila masukkan nama laluan.</span>
+                  </div>
+                  <div class="field-wrap">
+                    <label for="driverName">Driver Name <span class="bm-lbl">/ Nama Pemandu</span> <span class="req">*</span></label>
+                    <input type="text" id="driverName" placeholder="e.g. Ahmad bin Ali" />
+                    <span class="err" id="err-driverName">Please enter the driver name. / Sila masukkan nama pemandu.</span>
+                  </div>
+                  <div class="field-wrap">
+                    <label for="vehiclePlate">Vehicle Plate Number <span class="bm-lbl">/ No. Plat Kenderaan</span> <span class="req">*</span></label>
+                    <input type="text" id="vehiclePlate" placeholder="e.g. ABC1234" />
+                    <span class="err" id="err-vehiclePlate">Please enter vehicle plate. / Sila masukkan no. plat.</span>
+                  </div>
+                  <div class="field-wrap">
+                    <label for="transportCompany">Transport Company <span class="bm-lbl">/ Syarikat Pengangkutan</span> <span class="req">*</span></label>
+                    <div class="select-wrap">
+                      <select id="transportCompany">
+                        <option value="">-- Select company / Pilih syarikat --</option>
+                        <option value="Icon Trans">Icon Trans</option>
+                        <option value="Siva Jaya">Siva Jaya</option>
+                        <option value="Sudi Jaya">Sudi Jaya</option>
+                        <option value="SH Liew">SH Liew</option>
+                      </select>
+                      <span class="select-arrow">▾</span>
+                    </div>
+                    <span class="err" id="err-transportCompany">Please select transport company. / Sila pilih syarikat.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="section-divider" id="section-category-divider" style="display:none;"></div>
+
+          <!-- SECTION 3 — COMPLAINT DESCRIPTION -->
+          <div class="form-section">
+            <div class="section-hd">
+              <div class="sec-num" id="sec-num-complaint">03</div>
+              <div>
+                <h3 class="sec-title">Complaint Details <span class="bm-s">/ Butiran Aduan</span></h3>
+              </div>
+            </div>
+            <div class="field-wrap full">
+              <label for="feedbackMsg">Describe your complaint <span class="bm-lbl">/ Huraikan aduan anda</span> <span class="req">*</span></label>
+              <textarea id="feedbackMsg" rows="6" maxlength="1000"
+                placeholder="Please describe in detail, including when and where it happened... / Sila huraikan dengan terperinci, termasuk bila dan di mana..."></textarea>
+              <div class="textarea-footer">
+                <span class="char-hint">Be as detailed as possible / Sila berikan butiran yang lengkap</span>
+                <span class="char-counter"><span id="charCount">0</span>/1000</span>
+              </div>
+              <span class="err" id="err-feedbackMsg">Please describe your complaint. / Sila huraikan aduan anda.</span>
+            </div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <!-- SECTION 4 — SUPPORTING EVIDENCE -->
+          <div class="form-section">
+            <div class="section-hd">
+              <div class="sec-num" id="sec-num-evidence">04</div>
+              <div>
+                <h3 class="sec-title">Supporting Evidence <span class="bm-s">/ Bukti Sokongan</span></h3>
+                <p class="sec-note">Min 1 · Max 5 files · JPG, PNG, MP4, MOV · Max 20MB per file · Max 60MB total</p>
+              </div>
+            </div>
+
+            <div class="upload-zone" id="uploadZone">
+              <input type="file" id="imageInput" accept=".jpg,.jpeg,.png,.mp4,.mov" multiple hidden/>
+              <div class="upload-content">
+                <div class="upload-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+                </div>
+                <p class="upload-main">Click to upload or drag & drop</p>
+                <p class="upload-sub">Klik untuk muat naik atau seret & lepas</p>
+                <p class="upload-hint">📷 JPG, PNG &nbsp;·&nbsp; 🎥 MP4, MOV &nbsp;·&nbsp; Max 20MB per file &nbsp;·&nbsp; Max 60MB total</p>
+              </div>
+            </div>
+
+            <span class="err" id="err-images">Please upload at least 1 file. / Sila muat naik sekurang-kurangnya 1 fail.</span>
+
+            <div class="image-counter" id="imageCounter" style="display:none;">
+              <span id="imageCountText">0 / 5 files selected</span>
+              <button type="button" class="clear-btn" id="clearAllBtn">✕ Clear all</button>
+            </div>
+
+            <div class="preview-grid" id="previewGrid"></div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <div class="submit-row">
+            <p class="req-note"><span class="req">*</span> Required fields / Medan wajib diisi</p>
+            <button type="submit" id="submitBtn" class="submit-btn">
+              <span id="btnText">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="22" y1="2" x2="11" y2="13"/>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+                Submit Feedback / Hantar Maklum Balas
+              </span>
+              <span id="btnLoader" style="display:none;">
+                <span class="spinner"></span>
+                Submitting... / Menghantar...
+              </span>
+            </button>
+          </div>
+
+        </form>
+      </main>
+
+      <footer class="site-footer">
+        <p>HR Services · All submissions are strictly confidential · Semua penghantaran adalah sulit sepenuhnya</p>
+      </footer>
+
+    </div><!-- /screen-form -->
+
+  </div><!-- /page-wrapper -->
+
+  <!-- SUCCESS OVERLAY -->
+  <div class="success-overlay" id="successOverlay">
+    <div class="success-card">
+      <div class="success-check">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h2>Submitted Successfully!</h2>
+      <p class="s-bm">Aduan anda telah diterima dan akan disemak oleh pihak HR tidak lama lagi.</p>
+      <div class="success-cat-tag" id="successCatTag"></div>
+      <div class="ref-block">
+        <span class="ref-label">Reference ID / ID Rujukan</span>
+        <span class="ref-code" id="refCode">FB001</span>
+      </div>
+      <p class="ref-note">Please save this reference ID for follow-up. / Sila simpan ID ini untuk susulan.</p>
+      <button class="another-btn" id="anotherBtn">Submit Another / Hantar Lagi</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
